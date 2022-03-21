@@ -61,7 +61,7 @@ function App() {
   // console.log(data);
   function addToServer() {
     const payload = JSON.stringify(data);
-    fetch(`http://localhost:3004/employees`, {
+    fetch(`http://localhost:3000/employees`, {
       method: "POST",
       body: payload,
       headers: {
