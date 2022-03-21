@@ -33,7 +33,7 @@ function App() {
   }, []);
 
   function getData() {
-    fetch(`http://localhost:3000/employees`)
+    fetch(`http://localhost:3001/employees`)
       .then((res) => res.json())
       .then((res) => setDataArray(res))
 
@@ -61,7 +61,7 @@ function App() {
   // console.log(data);
   function addToServer() {
     const payload = JSON.stringify(data);
-    fetch(`http://localhost:3000/employees`, {
+    fetch(`http://localhost:3001/employees`, {
       method: "POST",
       body: payload,
       headers: {
@@ -87,36 +87,13 @@ function App() {
   });
 
   function filterResult(value) {
-    value == 1 ? setFilterOn(false) : setFilterOn(true);
+    value === 1 ? setFilterOn(false) : setFilterOn(true);
     // console.log(filterOn)
     var temp = dataArray.filter((e) => {
-      return value == e.department;
+      return value === e.department;
     });
     console.log(temp);
     setFilterArray(temp);
-  }
-
-  function sortedResult(str) {
-  let sorted = [];
-    if(str == "Asc" ){
-      console.log("ASC")
-      if(filterOn){
-       sorted =  dataArray.sort((a, b) => {
-          return a.salary - b.salary;
-        })
-
-        setDataArray(sorted)
-      }else{
-        sorted =  filterArray.sort((a, b) => {
-          return a.salary-b.salary;
-        })
-        setFilterArray(sorted);
-
-      }
-    }
-   // console.log(sorted)  ~ uncomment to see in console
-
-
   }
 
   return (
