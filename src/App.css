@@ -21,3 +21,7 @@ button {
   border-radius: 4px;
   border: 1.5px dashed #e4e4e4;
 }
+
+hr {
+  border: 0px;
+}
